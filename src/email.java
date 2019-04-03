@@ -1,11 +1,15 @@
 
-import java.util.*;public class email
-{ String firstName;
- String  lastName;
- String  password;
- int mailBoxCapacity;
+import java.util.*;
+public class email
+{ private String firstName;
+private String  lastName;
+private String  password;
+ String company="company.com";
+ private String email;
+private int mailBoxCapacity=500;
+private String alternativeEmail;
  int defaultPasswordLength=10;
- String department;
+ private String department;
  
 public email(String firstName,String lastName){
 	this.firstName=firstName;
@@ -14,10 +18,14 @@ public email(String firstName,String lastName){
 	//method call to return department
 	this.department=setDepartment();
 	System.out.println(this.department);
-
+  //Generate reandom password
 	this.password=randomPassword(defaultPasswordLength);
 	System.out.println("password is:"+this.password);
+	//returns email
+	email=firstName+"."+lastName+"."+department+"@"+company;
+	System.out.println(email);
 }
+
 
 
 private String setDepartment(){
@@ -41,11 +49,42 @@ private String setDepartment(){
 		String passwordSet="abcdjff7,43888833f77de12345@#$$&";
 		char[]password=new char[length];
 		for(int i=0;i<length;i++){
-			int rand=(int)Math.random()*passwordSet.length();
+			int rand;
+			rand=(int)(Math.random()*passwordSet.length());
 			password[i]=passwordSet.charAt(rand);
+			//System.out.println((int)Math.random());
 		}
 		return new String(password);
 		
+	}//getters and setters method
+	public void setPassword(String password)
+	{
+		this.password = password;
+	}
+
+	public String getPassword()
+	{
+		return password;
+	}
+
+	public void setAlternativeEmail(String alternativeEmail)
+	{
+		this.alternativeEmail = alternativeEmail;
+	}
+
+	public String getAlternativeEmail()
+	{
+		return alternativeEmail;
+	}
+
+	public void setMailBoxCapacity(int mailBoxCapacity)
+	{
+		this.mailBoxCapacity = mailBoxCapacity;
+	}
+
+	public int getMailBoxCapacity()
+	{
+		return mailBoxCapacity;
 	}
  
 }
